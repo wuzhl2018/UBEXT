@@ -17,7 +17,7 @@ function perro()
 
 function pwarn()
 {
-    echo -e "\033[47;45m$*\033[0m"
+    echo -e "\033[47;43m$*\033[0m"
 }
 
 function pinfo()
