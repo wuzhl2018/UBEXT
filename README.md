@@ -5,9 +5,10 @@
 
 #### 安装教程
 
-1. 使用以下方法完成下载:
-`git clone https://gitee.com/CCMYLOVE/UBEXT.git`
-
+- 1. 使用以下方法完成下载:
+```
+git clone https://gitee.com/CCMYLOVE/UBEXT.git
+```
 #### 使用说明
 
 - 1.控制台优化，设置控制台颜色和交互方式：
@@ -54,7 +55,6 @@ $ ./008.setup_samba.sh
 ```
 $./009.restart_samba.sh
 ```
-
 
 #### 码云特技
 
