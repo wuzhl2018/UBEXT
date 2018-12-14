@@ -1,11 +1,11 @@
-# UBEXT
+#   :star: UBEXT :star: 
 
 #### 项目介绍
 该项目用于帮助开发者将一台新安装的UBUNTU桌面系统快速改进为开发所用的UBUNTU系统。
 
 #### 安装教程
 
-- 1. 使用以下方法完成下载:
+- 1. 在命令交互行使用以下语句完成下载:
 ```
 git clone https://gitee.com/CCMYLOVE/UBEXT.git
 ```
