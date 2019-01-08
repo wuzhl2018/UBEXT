@@ -12,7 +12,7 @@ syntax enable
 
 syntax on
 
-colorscheme desert
+colorscheme ron
 
 "VIM user interface
 
