@@ -1,5 +1,3 @@
-"vimrc for weike ubuntu9.10
-
 set tags=tags
 
 set nocompatible
@@ -10,17 +8,16 @@ set autoread
 
 set mouse=a
 
-
-
 syntax enable
+
 syntax on
 
-colorscheme ron
+colorscheme desert
 
 "VIM user interface
 
 "Set 7 lines to the curors away from the border ,when moving vertical..
-set so=7
+set so=3
 
 "Turn on Wild menu
 set wildmenu
@@ -174,8 +171,9 @@ autocmd BufReadPost *
 	\	exe "normal g'\"" |
 	\ endif
 
-set cursorline
-highlight CursorLine   cterm=NONE ctermbg=green ctermfg=lightgray guibg=darkred guifg=white
+"配置聚焦颜色
+"set cursorline
+"highlight CursorLine   cterm=NONE ctermbg=green ctermfg=lightgray guibg=darkred guifg=white
 
-set cursorcolumn
-highlight CursorColumn cterm=NONE ctermbg=green ctermfg=lightgray guibg=darkred guifg=white
+"set cursorcolumn
+"highlight CursorColumn cterm=NONE ctermbg=green ctermfg=lightgray guibg=darkred guifg=white

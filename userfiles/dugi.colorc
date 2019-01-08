@@ -88,16 +88,18 @@ function sinfo()
     echo -e "\033[34;1m$*\033[0m"
 }
 
-pok   "pok   installed [OK]"
-pdone "pdone installed [OK]"
-perr  "perr  installed [OK]"
-perro "perro installed [OK]"
-pwarn "pwarn installed [OK]"
-pinfo "pinfo installed [OK]"
+if [ ! -f ~/.colorc ]; then
+	pok   "pok   installed [OK]"
+	pdone "pdone installed [OK]"
+	perr  "perr  installed [OK]"
+	perro "perro installed [OK]"
+	pwarn "pwarn installed [OK]"
+	pinfo "pinfo installed [OK]"
 
-sok   "sok   installed [OK]"
-sdone "sdone installed [OK]"
-serr  "serr  installed [OK]"
-serro "serro installed [OK]"
-swarn "swarn installed [OK]"
-sinfo "sinfo installed [OK]"
+	sok   "sok   installed [OK]"
+	sdone "sdone installed [OK]"
+	serr  "serr  installed [OK]"
+	serro "serro installed [OK]"
+	swarn "swarn installed [OK]"
+	sinfo "sinfo installed [OK]"
+fi
