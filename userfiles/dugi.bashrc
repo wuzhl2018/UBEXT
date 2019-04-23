@@ -29,6 +29,7 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
+export TERM=xterm-color
 case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
