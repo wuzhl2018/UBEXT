@@ -198,3 +198,4 @@ alias wsyncrm='_syncrm'
 alias wbackrm='_getrmcache'
 alias wlistrm='_listrm'
 PATH=$PATH:~/bin
+export USE_CCACHE=1

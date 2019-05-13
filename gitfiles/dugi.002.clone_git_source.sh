@@ -63,7 +63,7 @@ if [ "x${GIT_BRC_NAME}" == "xbare" ]; then
 	if [ ! -f ${GIT_MASTER_FILE} ]; then
 		pwarn "Create master branch on ${GIT_SRC_NAME}  [START]"
 		cd ${GIT_SRC_NAME}
-		pecho "git.init" > git.init
+		pinfo "git.init" > git.init
 		git add .
 		git commit -m "git.init"
 		git config --global push.default simple
