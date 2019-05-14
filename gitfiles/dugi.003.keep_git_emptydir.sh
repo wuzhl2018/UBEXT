@@ -34,21 +34,23 @@ done
 GITKEEP_LINE1="# Ignore everything in this directory"
 GITKEEP_LINE2="*"
 GITKEEP_LINE3="# Except this file !.gitkeep"
-if [ -e /opt/.gitkeep ]; then
-	sudo rm -rf /opt/.gitkeep
+
+if [ -e ./.gitkeep.raw ]; then
+	rm -rf ./.gitkeep.raw
 fi
-sudo echo "${GITKEEP_LINE1}" >  /opt/.gitkeep
-sudo echo "${GITKEEP_LINE2}" >> /opt/.gitkeep
-sudo echo "${GITKEEP_LINE3}" >> /opt/.gitkeep
-sudo chmod 777 /opt/.gitkeep
-sync
+
+echo "${GITKEEP_LINE1}" >  ./.gitkeep.raw
+echo "${GITKEEP_LINE2}" >> ./.gitkeep.raw
+echo "${GITKEEP_LINE3}" >> ./.gitkeep.raw
+
 for adir in ${EMP_DIR_LIST};
 do
-	sudo cp /opt/.gitkeep ${adir}/
+	cp -rf ./.gitkeep.raw  ${adir}/.gitkeep
 	if [ $? -eq 0 ]; then
 		pdone "set ${adir} as git keep [OK]"
 	else
 		perro "set ${adir} as git keep [ERROR]"
 	fi
 done
+rm -rf ./.gitkeep.raw
 pinfo "Do keep git empty directory [FINISH]"
