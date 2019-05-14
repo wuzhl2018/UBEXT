@@ -28,3 +28,6 @@ git config --global user.name "${user_name}"
 pdone "Setup git user name: ${user_name} [OK]"
 git config --global user.email "${user_mail}"
 pdone "Setup git user email: ${user_mail} [OK]"
+
+#避免中文乱码
+git config --global core.quotepath false
