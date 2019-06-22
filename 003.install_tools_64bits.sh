@@ -9,7 +9,7 @@ source ~/.colorc
 do_install()
 {
 	pwarn "Install $1 [START]"
-    sudo apt-get install -y $1 > /dev/null 2>&1
+	sudo apt-get install -y $1 > /dev/null 2>&1
     if [ $? -eq 0 ]; then
 		pdone "Install $1  [OK]"
 	else
