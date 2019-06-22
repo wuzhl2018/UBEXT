@@ -66,6 +66,7 @@ do_install chrpath
 do_install cpio
 do_install openssh-server
 do_install samba
+do_install system-config-samba
 do_install subversion
 do_install git
 do_install git-core
