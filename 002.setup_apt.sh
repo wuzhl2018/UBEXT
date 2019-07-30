@@ -53,6 +53,9 @@ main_proc()
 	elif [ "x$1" = "x3" ]; then
 		export THE_APT_VER=18.04
 		update_aptsource
+	elif [ "x$1" = "x4" ]; then
+		export THE_APT_VER=19.04
+		update_aptsource
 	else
 		show_help
 	fi

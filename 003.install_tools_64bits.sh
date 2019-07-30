@@ -32,6 +32,13 @@ fo_install()
 
 pwarn "Instal tools [START]"
 
+#for common network
+do_install net-tools
+
+#for zephyr tools
+do_install cmake
+do_install python3-pip
+
 #安装编辑器
 do_install vim
 #安装代码索引工具
@@ -49,8 +56,8 @@ do_install lib32stdc++6
 do_install ncurses-dev
 do_install libncurses5
 do_install libncurses5-dev
-do_install lib32ncurses5
-do_install lib32ncurses5-dev
+#do_install lib32ncurses5
+#do_install lib32ncurses5-dev
 do_install flex
 do_install automake
 do_install autoconf
@@ -79,7 +86,7 @@ do_install chrpath
 do_install cpio
 do_install openssh-server
 do_install samba
-do_install system-config-samba
+#do_install system-config-samba
 do_install subversion
 #实施git代码管理需要以下工具
 do_install git
