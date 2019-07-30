@@ -199,3 +199,9 @@ alias wbackrm='_getrmcache'
 alias wlistrm='_listrm'
 PATH=$PATH:~/bin
 export USE_CCACHE=1
+
+#for zephyr
+if [ ! -d ~/.local/bin ]; then
+	mkdir ~/.local/bin
+fi
+PATH=$PATH:~/.local/bin
