@@ -16,6 +16,8 @@ function pok()
 {
     echo -e "\033[47;42m$*\033[0m"
 }
+
+#通常在操作成功时调用显示绿色背景
 function pdone()
 {
     echo -e "\033[47;42m$*\033[0m"
@@ -26,6 +28,8 @@ function perr()
 {
     echo -e "\033[47;41m$*\033[0m"
 }
+
+#通常在操作失败时调用显示红色背景
 function perro()
 {
     echo -e "\033[47;41m$*\033[0m"
@@ -37,7 +41,24 @@ function pwarn()
     echo -e "\033[30;43m$*\033[0m"
 }
 
-#通常在需要提示重要信息时显示蓝色文字
+#通常在操作需提示时调用显示紫色背景
+function pnote()
+{
+    echo -e "\033[47;45m$*\033[0m"
+}
+#通常在操作需着重时调用显示青色背景
+function pshow()
+{
+    echo -e "\033[47;46m$*\033[0m"
+}
+
+#通常在操作需着重时调用显示青色背景
+function pshow()
+{
+    echo -e "\033[47;46m$*\033[0m"
+}
+
+#通常在需要提示重要信息时显示蓝色背景
 function pinfo()
 {
     echo -e "\033[30;44m$*\033[0m"
@@ -55,12 +76,13 @@ function pinfo()
 #36 天蓝色
 #37 白色
 #-----------------------------------------------------------------------
-
 #通常在操作成功时调用显示绿色文字
 function sok()
 {
     echo -e "\033[32;1m$*\033[0m"
 }
+
+#通常在操作成功时调用显示绿色文字
 function sdone()
 {
     echo -e "\033[32;1m$*\033[0m"
@@ -82,12 +104,23 @@ function swarn()
     echo -e "\033[33;1m$*\033[0m"
 }
 
+#通常在操作需提示时调用显示紫色文字
+function snote()
+{
+    echo -e "\033[35;1m$*\033[0m"
+}
+
+#通常在操作需着重时调用显示青色文字
+function sshow()
+{
+    echo -e "\033[36;1m$*\033[0m"
+}
+
 #通常在需要提示重要信息时显示蓝色文字
 function sinfo()
 {
     echo -e "\033[34;1m$*\033[0m"
 }
-
 if [ ! -f ~/.colorc ]; then
 	pok   "pok   installed [OK]"
 	pdone "pdone installed [OK]"
