@@ -64,6 +64,12 @@ function pinfo()
     echo -e "\033[30;44m$*\033[0m"
 }
 
+#通常在需要提示重要信息时显示白色背景
+function pecho()
+{
+    echo -e "\033[30;47m$*\033[0m"
+}
+
 #通常在操作成功时调用显示绿色背景
 function fpok()
 {
@@ -124,6 +130,13 @@ function fpinfo()
 {
 	local curpath=$(cd "$(dirname "$0")"; pwd)
     echo -e "\033[30;44m${curpath}:>\r\n $*\033[0m"
+}
+
+#通常在需要提示重要信息时显示白色背景
+function fpecho()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[30;47m${curpath}:>\r\n $*\033[0m"
 }
 
 #以下为文字带有颜色的函数
