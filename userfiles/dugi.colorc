@@ -64,6 +64,68 @@ function pinfo()
     echo -e "\033[30;44m$*\033[0m"
 }
 
+#通常在操作成功时调用显示绿色背景
+function fpok()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[47;42m${curpath}:>\r\n $*\033[0m"
+}
+
+#通常在操作成功时调用显示绿色背景
+function fpdone()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[47;42m${curpath}:>\r\n $*\033[0m"
+}
+
+#通常在操作失败时调用显示红色背景
+function fperr()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[47;41m${curpath}:>\r\n $*\033[0m"
+}
+
+#通常在操作失败时调用显示红色背景
+function fperro()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[47;41m${curpath}:>\r\n $*\033[0m"
+}
+
+#通常在操作不规范时调用显示黄色背景
+function fpwarn()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[30;43m${curpath}:>\r\n $*\033[0m"
+}
+
+#通常在操作需提示时调用显示紫色背景
+function fpnote()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[47;45m${curpath}:>\r\n $*\033[0m"
+}
+#通常在操作需着重时调用显示青色背景
+function fpshow()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[47;46m${curpath}:>\r\n $*\033[0m"
+}
+
+#通常在操作需着重时调用显示青色背景
+function fpshow()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[47;46m${curpath}:>\r\n $*\033[0m"
+}
+
+#通常在需要提示重要信息时显示蓝色背景
+function fpinfo()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[30;44m${curpath}:>\r\n $*\033[0m"
+}
+
 #以下为文字带有颜色的函数
 #颜色列表:
 #-----------------------------------------------------------------------
@@ -121,6 +183,61 @@ function sinfo()
 {
     echo -e "\033[34;1m$*\033[0m"
 }
+
+#通常在操作成功时调用显示绿色文字
+function fsok()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[32;1m${curpath}:>\r\n $*\033[0m"
+}
+
+#通常在操作成功时调用显示绿色文字
+function fsdone()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[32;1m${curpath}:>\r\n $*\033[0m"
+}
+
+#通常在操作失败时调用显示红色文字
+function fserr()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[31;1m${curpath}:>\r\n $*\033[0m"
+}
+function fserro()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[31;1m${curpath}:>\r\n $*\033[0m"
+}
+
+#通常在操作不规范时调用显示黄色文字
+function fswarn()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[33;1m${curpath}:>\r\n $*\033[0m"
+}
+
+#通常在操作需提示时调用显示紫色文字
+function fsnote()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[35;1m${curpath}:>\r\n $*\033[0m"
+}
+
+#通常在操作需着重时调用显示青色文字
+function fsshow()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[36;1m${curpath}:>\r\n $*\033[0m"
+}
+
+#通常在需要提示重要信息时显示蓝色文字
+function fsinfo()
+{
+	local curpath=$(cd "$(dirname "$0")"; pwd)
+    echo -e "\033[34;1m${curpath}:>\r\n $*\033[0m"
+}
+
 if [ ! -f ~/.colorc ]; then
 	pok   "pok   installed [OK]"
 	pdone "pdone installed [OK]"
