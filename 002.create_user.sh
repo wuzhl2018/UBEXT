@@ -3,14 +3,14 @@ show_usage()
 {
 	echo "使用说明:"
 	echo "该脚本用于自动创建用户和同名分组"
-	echo "$0 用户名称 登陆口令"
+	echo "$0 用户名称"
 	return 1
 }
 
 mainproc()
 {
 	echo "create_user:[开始]>>>>>>>>>>>>>>>>>>>>>>>>>>"
-	if [ $# -ne 2 ]; then
+	if [ $# -ne 1 ]; then
 		echo "输入参数错误!"
 		show_usage
 		return 1
@@ -25,7 +25,15 @@ mainproc()
 	echo "[成功]"
 
 	echo "创建用户及其相关信息..."
-	sudo useradd -m -d /home/$1 -g $1 -s /bin/bash -r $1 -p $2
+	sudo useradd -m -d /home/$1 -g $1 -s /bin/bash -r $1
+	if [ $? -ne 0 ]; then
+		echo "[失败]"
+		return 1
+	fi
+	echo "[成功]"
+	
+	echo "创建用户登陆密码..."
+	sudo passwd $1
 	if [ $? -ne 0 ]; then
 		echo "[失败]"
 		return 1
