@@ -203,5 +203,5 @@ export USE_CCACHE=1
 #for zephyr
 if [ ! -d ~/.local/bin ]; then
 	mkdir ~/.local/bin
+	PATH=$PATH:~/.local/bin
 fi
-PATH=$PATH:~/.local/bin

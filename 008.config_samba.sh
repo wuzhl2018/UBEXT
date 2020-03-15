@@ -6,6 +6,9 @@
 #使用颜色打印函数
 source ~/.colorc
 
+sudo apt-get install samba
+
+
 #设定用户
 smb_user_name=$(whoami)
 #设定需要修改的文件
