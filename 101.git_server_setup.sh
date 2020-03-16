@@ -9,19 +9,20 @@ export ownname=gitown
 #设置GIT仓库管理者名称
 export mgrname=$(whoami)
 
+#快速安装软件
 do_install()
 {
-	swarn "Install $1 [START]"
+	swarn "安装 $1 [开始]"
 	sudo apt-get install -y $1 > /dev/null 2>&1
     if [ $? -eq 0 ]; then
-		sdone "Install $1  [OK]"
+		sdone "安装 $1 [完成]"
 	else
-		serro. "Install $1  [ERROR]"
+		serro "安装 $1 [失败]"
 		exit 1
 	fi
 }
 
-#设置必须工具
+#安装必须工具
 install_tools()
 {
 	do_install git
@@ -31,73 +32,73 @@ install_tools()
 	do_install python-setuptools
 
 	if [ ! -d gitosis ]; then
-		echo "下载gitosis..."
+		sinfo "下载gitosis..."
 		git clone https://github.com/res0nat0r/gitosis.git  > /dev/null 2>&1
 		if [ $? -ne 0 ]; then
-			echo "[失败]"
+			serro "[失败]"
 			exit 1
 		fi
-		echo "[成功]"
+		sdone "[成功]"
 
 		echo "安装gitosis..."
 		cd gitosis
 		sudo python setup.py install > /dev/null 2>&1
 		if [ $? -ne 0 ]; then
-			echo "[失败]"
+			serro "[失败]"
 			cd - > /dev/null 2>&1
 			exit 1
 		fi
 		cd - > /dev/null 2>&1
-		echo "[成功]"
+		sdone "[成功]"
 	fi
 	return 0
 }
 
-#设置git仓库者信息
+#设置git仓库拥有者信息
 setup_gitown_info()
 {
 	ownname=${ownownname}
 
-	echo "创建git仓库者分组..."
+	echo "创建git仓库拥有者分组..."
 	sudo userdel  $ownname > /dev/null 2>&1
 	sudo groupdel $ownname > /dev/null 2>&1
 	sudo groupadd $ownname
 	if [ $? -ne 0 ]; then
-		echo "[失败]"
+		serro "[失败]"
 		return 1
 	fi
-	echo "[成功]"
+	sdone "[成功]"
 
-	echo "创建git仓库者账号..."
+	echo "创建git仓库拥有者账号..."
 	sudo useradd -m -d /home/$ownname -g $ownname -s /bin/bash -r $ownname
 	if [ $? -ne 0 ]; then
-		echo "[失败]"
+		serro "[失败]"
 		return 1
 	fi
-	echo "[成功]"
+	sdone "[成功]"
 	
-	echo "创建git仓库者密码..."
+	echo "创建git仓库拥有者密码..."
 	sudo passwd $ownname
 	if [ $? -ne 0 ]; then
-		echo "[失败]"
+		serro "[失败]"
 		return 1
 	fi
-	echo "[成功]"
+	sdone "[成功]"
 	
-	echo "分配git仓库者分组..."
+	echo "分配git仓库拥有者分组..."
 	sudo usermod -a -G sudo $ownname
 	if [ $? -ne 0 ]; then
-		echo "[失败]"
+		serro "[失败]"
 		return 1
 	fi
-	echo "[成功]"
+	sdone "[成功]"
 
 	echo "拷贝基础文件..."
 	sudo cp -rf userfiles/dugi.colorc   /home/$ownname/.colorc
-	sudo cp -rf /home/$ownname/.bashrc     /home/$ownname/.bashrc.old
+	sudo cp -rf /home/$ownname/.bashrc  /home/$ownname/.bashrc.old
 	sudo cp -rf userfiles/dugi.bashrc   /home/$ownname/.bashrc
 
-	echo "请在git仓库者执行以下设置:"
+	echo "请在git仓库拥有者执行以下设置:"
 	echo "cd ~"
 	echo "git config --global user.ownname  $ownname"
 	echo "git config --global user.email    $ownname@qq.com"
@@ -109,7 +110,7 @@ setup_gitown_info()
 	echo "sudo -H -u $ownname gitosis-init < ./keys.ssh.$mgrname/id_rsa.pub"
 	echo "成功后会在/home/$ownname/目录下产生repositories目录"
 	echo ""
-	echo "登陆git仓库者..."
+	echo "登陆git仓库拥有者..."
 	echo "su $ownname"
 	su $ownname
 }
@@ -125,13 +126,13 @@ setup_gitmgr_info()
 	#拷贝一些脚本作为日常git管理使用
 	sudo cp gitfiles/dugi.*.sh /usr/bin/
 	sudo chmod 777 /usr/bin/dugi.*.sh
-	pdone "Config git [OK]"
+	pdone "Config git [完成]"
 
 	#写入用户信息
 	git config --global user.name "${name}"
-	pdone "Setup git user name: ${name} [OK]"
+	pdone "Setup git user name: ${name} [完成]"
 	git config --global user.email "${mail}"
-	pdone "Setup git user email: ${mail} [OK]"
+	pdone "Setup git user email: ${mail} [完成]"
 
 	#避免中文乱码
 	git config --global core.quotepath false
