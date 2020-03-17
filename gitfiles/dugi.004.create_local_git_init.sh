@@ -59,11 +59,14 @@ mainproc()
 	else
 		sdone "添加远程仓库: ${REMOTE_GITOWN_PATH} [成功]"
 	fi
-
-	sinfo "推送远程仓库..."
-	git push origin master
-
 	sdone "创建完毕"
+
+	sinfo "注意: 推送远程仓库前需要以下操作:"
+	sinfo "1.需要在本地执行:ssh-keygen -t rsa 产生公钥"
+	sinfo "2.将~/.ssh目录产生的.pub公钥文件递交到远程仓库进入gitosis管理"
+	sinfo "3.请求gitosis仓库管理者新增当前项目并设置权限"
+
+	$git push origin master
 }
 
 mainproc $@
