@@ -8,29 +8,29 @@ source ~/.colorc
 
 do_install()
 {
-	pwarn "Install $1 [START]"
+	swarn "Install $1 [START]"
 	sudo apt-get install -y $1 > /dev/null 2>&1
     if [ $? -eq 0 ]; then
-		pdone "Install $1  [OK]"
+		sdone "Install $1  [OK]"
 	else
-		perro "Install $1  [ERROR]"
+		serro "Install $1  [ERROR]"
 		exit 1
 	fi
 }
 
 fo_install()
 {
-	pwarn "Install $1 [START]"
+	swarn "Install $1 [START]"
     sudo apt-get install -y $1 --force-yes > /dev/null 2>&1
     if [ $? -eq 0 ]; then
-		pdone "Install $1  [OK]"
+		sdone "Install $1  [OK]"
 	else
-		perro "Install $1  [ERROR]"
+		serro "Install $1  [ERROR]"
 		exit 1
 	fi
 }
 
-pwarn "Instal tools [START]"
+swarn "Instal tools [START]"
 
 #for common network
 do_install net-tools
@@ -85,8 +85,6 @@ do_install diffstat
 do_install chrpath
 do_install cpio
 do_install openssh-server
-do_install samba
-#do_install system-config-samba
 do_install subversion
 #实施git代码管理需要以下工具
 do_install git
@@ -95,4 +93,4 @@ do_install git-core
 do_install libgl1-mesa-dev
 do_install libglu1-mesa-dev
 #do_install asciidoc
-pdone "Instal tools [FINISH]"
+sdone "Instal tools [FINISH]"
