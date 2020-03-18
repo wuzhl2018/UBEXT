@@ -57,11 +57,10 @@ install_tools()
 #设置git仓库拥有者信息
 setup_gitown_info()
 {
-	ownname=${ownownname}
-
 	echo "创建git仓库拥有者分组..."
 	sudo userdel  $ownname > /dev/null 2>&1
 	sudo groupdel $ownname > /dev/null 2>&1
+	echo "sudo groupadd $ownname"
 	sudo groupadd $ownname
 	if [ $? -ne 0 ]; then
 		serro "[失败]"
