@@ -102,7 +102,6 @@ setup_gitown_info()
 	echo "git config --global user.ownname  $ownname"
 	echo "git config --global user.email    $ownname@qq.com"
 	echo "git config --global core.quotepath false"
-	echo "git config --global core.quotepath false"
 	echo "sudo rm ./keys.ssh.$mgrname -rf"
 	echo "sudo cp /tmp/keys.ssh.$mgrname ./ -rf"
 	echo "sudo chown -R $ownname:$ownname keys.ssh.$mgrname"
