@@ -66,7 +66,7 @@ mainproc()
 	sinfo "2.将~/.ssh目录产生的.pub公钥文件递交到远程仓库进入gitosis管理"
 	sinfo "3.请求gitosis仓库管理者新增当前项目并设置权限"
 
-	$git push origin master
+	git push origin master
 }
 
 mainproc $@
