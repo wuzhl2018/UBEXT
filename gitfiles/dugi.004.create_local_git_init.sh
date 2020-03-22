@@ -11,9 +11,22 @@ show_usage()
 {
 	sinfo "使用说明:"
 	sinfo "该脚本用于创建并初始化本地仓库并推送到远程仓库:"
-	sinfo "   $0 本地仓库名称 远程仓库拥有者@远程仓库IP:远程仓库名称"
+	sinfo "   $0 本地仓库名称 远程仓库拥有者@远程仓库IP:远程仓库名称(不用加.git后缀)"
 	sinfo "使用示例:"
-	sinfo "   $0 project1 gitown@192.168.1.100:project1.git"
+	sinfo "   $0 project1 gitown@192.168.1.100:project1"
+	show_note
+}
+
+#提示函数
+show_note()
+{
+	swarn "特别注意: "
+	swarn "新建并推送到远程仓库前需要做以下操作:"
+	swarn "1.开发者在本地执行:ssh-keygen -t rsa (产生公钥.pub文件存放在~/.ssh目录)"
+	swarn "2.开发者将~/.ssh目录的公钥.pub文件发送给仓库管理员"
+	swarn "3.开发者告知仓库管理员需要新建的项目名称(例如project1)"
+	swarn "4.开发者等待仓库管理员打开权限"
+	swarn "5.获得权限后方可执行该脚本"
 }
 
 mainproc()
@@ -60,13 +73,10 @@ mainproc()
 		sdone "添加远程仓库: ${REMOTE_GITOWN_PATH} [成功]"
 	fi
 	sdone "创建完毕"
-
-	sinfo "注意: 推送远程仓库前需要以下操作:"
-	sinfo "1.需要在本地执行:ssh-keygen -t rsa 产生公钥"
-	sinfo "2.将~/.ssh目录产生的.pub公钥文件递交到远程仓库进入gitosis管理"
-	sinfo "3.请求gitosis仓库管理者新增当前项目并设置权限"
-
+	
+	sinfo "推送本地仓库到远程仓库...[开始]"
 	git push origin master
+	sdone "推送本地仓库到远程仓库...[完成]"
 }
 
 mainproc $@
