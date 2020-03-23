@@ -8,9 +8,9 @@ source ~/.colorc
 
 set -e
 
-show_help()
+show_usage()
 {
-	THE_APP_NAME=002.setup_ap.sh
+	THE_APP_NAME=$0
 	pwarn "wrong params [WARNNING]"
 	sinfo "Usage: $THE_APP_NAME version of ubuntu/mint"
 	sinfo "$THE_APP_NAME 1 [for ubuntu14.04/mint17]"
@@ -22,7 +22,7 @@ show_help()
 update_aptsource()
 {
 	if [ -z "${THE_APT_VER}" ]; then
-		show_help
+		show_usage
 	fi
 
 	sudo cp aptfiles/${THE_APT_VER}/sources.list /etc/apt/
@@ -42,7 +42,7 @@ update_aptsource()
 	fi
 }
 
-main_proc()
+mainproc()
 {
 	if [ "x$1" = "x1" ]; then
 		export THE_APT_VER=14.04
@@ -57,8 +57,7 @@ main_proc()
 		export THE_APT_VER=19.04
 		update_aptsource
 	else
-		show_help
+		show_usage $@
 	fi
 }
-
-main_proc $1
+mainproc $@

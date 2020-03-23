@@ -252,12 +252,15 @@ function fsinfo()
 }
 
 if [ ! -f ~/.colorc ]; then
+	echo "-------------------------------------"
 	pok   "pok   installed [OK]"
 	pdone "pdone installed [OK]"
 	perr  "perr  installed [OK]"
 	perro "perro installed [OK]"
 	pwarn "pwarn installed [OK]"
 	pinfo "pinfo installed [OK]"
+	pnote "pnote installed [OK]"
+	pshow "pshow installed [OK]"
 
 	sok   "sok   installed [OK]"
 	sdone "sdone installed [OK]"
@@ -265,4 +268,7 @@ if [ ! -f ~/.colorc ]; then
 	serro "serro installed [OK]"
 	swarn "swarn installed [OK]"
 	sinfo "sinfo installed [OK]"
+	snote "snote installed [OK]"
+	sshow "sshow installed [OK]"
+	echo "-------------------------------------"
 fi

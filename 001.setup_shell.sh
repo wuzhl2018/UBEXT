@@ -9,11 +9,13 @@ if [ -f ~/.colorc ]; then
 	rm ~/.colorc
 fi
 
+export THINGS_DIR=001.setup_shell.things
+
 #第一次安装显示各个函数的颜色效果
-source userfiles/dugi.colorc
+source ${THINGS_DIR}/dugi.colorc
 
 #拷贝并且重命名文件
-cp -rf userfiles/dugi.colorc   ~/.colorc
+cp -rf $THINGS_DIR/dugi.colorc   ~/.colorc
 if [ $? -ne 0 ]; then
 	perro "failed install dugi.colorc [ERROR]"
 else
@@ -24,10 +26,10 @@ fi
 cp -rf ~/.bashrc ~/.bashrc.old
 
 #部署控制台脚本
-cp -rf userfiles/dugi.bashrc   ~/.bashrc
+cp -rf $THINGS_DIR/dugi.bashrc   ~/.bashrc
 if [ $? -ne 0 ]; then
-	perro "failed install dugi.bashrc [ERROR]"
+	echo "failed install dugi.bashrc [ERROR]"
 else
-	pdone "finish install dugi.bashrc [OK]"
+	echo "finish install dugi.bashrc [OK]"
 fi
 

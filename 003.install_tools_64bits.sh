@@ -1,8 +1,5 @@
 #!/bin/bash
-#作者:DUGIGEEK
-#日期:2018.12.08
-#描述:安装一些必要的工具盒软件
-
+set -e
 #使用颜色打印函数
 source ~/.colorc
 
@@ -39,8 +36,6 @@ do_install net-tools
 do_install cmake
 do_install python3-pip
 
-#安装编辑器
-do_install vim
 #安装代码索引工具
 do_install cscope
 #安装代码标签工具
