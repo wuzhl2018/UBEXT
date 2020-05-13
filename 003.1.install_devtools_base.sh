@@ -47,4 +47,5 @@ do_install ncurses-dev
 do_install flex
 do_install bison
 do_install gperf
+do_install curl
 sdone "Instal tools [FINISH]"

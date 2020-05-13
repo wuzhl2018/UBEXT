@@ -49,7 +49,8 @@ do_python2_install()
 
 do_pip2_install()
 {
-	do_install python-pip
+	echo "sudo python2 pip2fiels/get-pip.py"
+	sudo python2 pip2files/get-pip.py
 }
 
 do_python2_install
