@@ -8,30 +8,33 @@ source ~/.colorc
 
 #需要给定源码库名称
 if [ -z $1 ]; then
-	pwarn "Please set git bare name"
+	pwarn "请输入git基础库名称"
 	exit 1
 fi
 
+#仓库路径
+git_repo_rpath=/home/gitown/repositories
+#仓库用户
+git_repo_admin=gitown
+
 #如果源码顶层目录不存在则创建
-if [ ! -d src ]; then
-	sudo mkdir src
-	sudo chown -R git:git src
-	pdone "Create git bare source root [OK]"
+if [ ! -d ${git_repo_rpath} ]; then
+	sudo mkdir ${git_repo_rpath}
+	sudo chown -R ${git_repo_admin}:${git_repo_admin} ${git_repo_rpath}
+	pdone "成功创建git仓库目录:${git_repo_rpath}"
 fi
 
 #开始创建源码空库
-cd src
+cd ${git_repo_rpath}
 sudo git init --bare $1.git
 if [ $? -ne 0 ]; then
-	perro "Create git bare source [ERROR]"
+	perro "创建git基础仓库$1.git [失败]"
 	exit 1
 fi
-pdone "Create git bare source done!"
+pdone "创建git基础仓库$1.git [完成]"
 
 #将创建的源码空库所有者修改为git
-sudo chown -R git:git $1.git
+sudo chown -R ${git_repo_admin}:${git_repo_admin} $1.git
 
 #回到先前目录
 cd - > /dev/null
-pdone "Create git bare source: $1.git [OK]"
-exit 0
