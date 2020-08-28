@@ -31,6 +31,9 @@ pdone "Setup git user email: ${user_mail} [OK]"
 #防止git status中文乱码
 git config --global core.quotepath false
 pdone "git config --global core.quotepath false [OK]"
+#自动将lf格式换行在递交时替换为crlf格式换行
+echo "git config --global core.autocrlf true"
+pdone "git config --global core.autocrlf true"
 
 #避免中文乱码
 git config --global core.quotepath false
