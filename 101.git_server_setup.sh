@@ -101,10 +101,12 @@ setup_gitown_info()
 	echo "cd ~"
 	echo "git config --global user.ownname  $ownname"
 	echo "git config --global user.email    $ownname@qq.com"
+
+	#不自动识别转义字符(防止git status中文乱码)
 	echo "git config --global core.quotepath false"
 
-	#自动将lf格式换行在递交时替换为crlf格式换行
-	echo "git config --global core.autocrlf true"
+	#不自动替换crlf格式(防止shell无法执行)
+	echo "git config --global core.autocrlf false"
 
 	echo "sudo rm ./keys.ssh.$mgrname -rf"
 	echo "sudo cp /tmp/keys.ssh.$mgrname ./ -rf"

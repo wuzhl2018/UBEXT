@@ -28,12 +28,12 @@ git config --global user.name "${user_name}"
 pdone "Setup git user name: ${user_name} [OK]"
 git config --global user.email "${user_mail}"
 pdone "Setup git user email: ${user_mail} [OK]"
-#防止git status中文乱码
+#不自动识别转义字符(防止git status中文乱码)
 git config --global core.quotepath false
 pdone "git config --global core.quotepath false [OK]"
-#自动将lf格式换行在递交时替换为crlf格式换行
-echo "git config --global core.autocrlf true"
-pdone "git config --global core.autocrlf true"
+#不自动替换crlf格式(防止shell无法执行)
+echo "git config --global core.autocrlf false"
+pdone "git config --global core.autocrlf false"
 
 #避免中文乱码
 git config --global core.quotepath false
