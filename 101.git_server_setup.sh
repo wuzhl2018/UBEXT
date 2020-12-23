@@ -93,9 +93,9 @@ setup_gitown_info()
 	sdone "[成功]"
 
 	echo "拷贝基础文件..."
-	sudo cp -rf userfiles/dugi.colorc   /home/$ownname/.colorc
+	sudo cp -rf 001.setup_shell.things/dugi.colorc   /home/$ownname/.colorc
 	sudo cp -rf /home/$ownname/.bashrc  /home/$ownname/.bashrc.old
-	sudo cp -rf userfiles/dugi.bashrc   /home/$ownname/.bashrc
+	sudo cp -rf 001.setup_shell.things/dugi.bashrc   /home/$ownname/.bashrc
 
 	echo "请在git仓库拥有者账户gitown执行以下设置:"
 	echo "--------------------------------------------------------------------"
