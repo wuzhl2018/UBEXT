@@ -97,21 +97,33 @@ setup_gitown_info()
 	sudo cp -rf /home/$ownname/.bashrc  /home/$ownname/.bashrc.old
 	sudo cp -rf userfiles/dugi.bashrc   /home/$ownname/.bashrc
 
-	echo "请在git仓库拥有者执行以下设置:"
+	echo "请在git仓库拥有者账户gitown执行以下设置:"
+	echo "--------------------------------------------------------------------"
 	echo "cd ~"
 	echo "git config --global user.ownname  $ownname"
 	echo "git config --global user.email    $ownname@qq.com"
-
 	#不自动识别转义字符(防止git status中文乱码)
 	echo "git config --global core.quotepath false"
-
 	#不自动替换crlf格式(防止shell无法执行)
 	echo "git config --global core.autocrlf false"
-
 	echo "sudo rm ./keys.ssh.$mgrname -rf"
 	echo "sudo cp /tmp/keys.ssh.$mgrname ./ -rf"
 	echo "sudo chown -R $ownname:$ownname keys.ssh.$mgrname"
 	echo "sudo -H -u $ownname gitosis-init < ./keys.ssh.$mgrname/id_rsa.pub"
+	echo "--------------------------------------------------------------------"
+	echo "#!/bin/bash" > /tmp/gitown_repo_setup.sh
+	echo "cd ~" >> /tmp/gitown_repo_setup.sh
+	echo "git config --global user.ownname  $ownname"	>> /tmp/gitown_repo_setup.sh
+	echo "git config --global user.email    $ownname@qq.com"	>> /tmp/gitown_repo_setup.sh
+	echo "git config --global core.quotepath false"	>> /tmp/gitown_repo_setup.sh
+	echo "git config --global core.autocrlf false"	>> /tmp/gitown_repo_setup.sh
+	echo "sudo rm ./keys.ssh.$mgrname -rf"	>> /tmp/gitown_repo_setup.sh
+	echo "sudo cp /tmp/keys.ssh.$mgrname ./ -rf"	>> /tmp/gitown_repo_setup.sh
+	echo "sudo chown -R $ownname:$ownname keys.ssh.$mgrname"	>> /tmp/gitown_repo_setup.sh
+	echo "sudo -H -u $ownname gitosis-init < ./keys.ssh.$mgrname/id_rsa.pub"	>> /tmp/gitown_repo_setup.sh
+	chmod 777 /tmp/gitown_repo_setup.sh
+	echo "--------------------------------------------------------------------"
+	echo "以上步骤已经存储为/tmp/gitown_repo_setup.sh"
 	echo "成功后会在/home/$ownname/目录下产生repositories目录"
 	echo ""
 	echo "登陆git仓库拥有者..."
